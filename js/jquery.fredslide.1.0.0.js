@@ -14,12 +14,12 @@
 				lilen = true;
 
 			//元素初始化
-			lilen = $.fn.fredslide.slide_load($this,opts);
+			lilen = slide_load($this,opts);
 
 			//添加左右按钮
-			$.fn.fredslide.prev_next_add($this,opts);
+			prev_next_add($this,opts);
 			//添加圆点按钮
-			$.fn.fredslide.dot_add($this,opts);
+			dot_add($this,opts);
 
 		});
 
@@ -27,7 +27,7 @@
 
 	//自动播放
 	var timer = null;
-	$.fn.fredslide.auto_play = function(obj,opts){
+	function auto_play(obj,opts){
 
 	   var depaytime = opts.AutoDelay + opts.SwitchTime + opts.AutoTime;
 
@@ -39,23 +39,22 @@
 			if(opts.SwitchStyle == 'fade')
 			{
 				//fade切换
-				$.fn.fredslide.fade_prev_next(obj,true,opts);
+				fade_prev_next(obj,true,opts);
 			}
 
 			if(opts.SwitchStyle == 'toleft')
 			{
 				//toleft切换
-				$.fn.fredslide.toleft_prev_next(obj,true,opts);
+				toleft_prev_next(obj,true,opts);
 			}
 
-
-			$.fn.fredslide.auto_play(obj,opts);
+			auto_play(obj,opts);
 
 		},depaytime);
 	};
 
 	//添加圆点按钮
-	$.fn.fredslide.dot_add = function(obj,opts){
+	function dot_add(obj,opts){
 
 		if(!opts.Dot)
 		{
@@ -100,7 +99,7 @@
 			if(opts.SwitchStyle == 'fade')
 			{
 				//fade切换
-				$.fn.fredslide.fade_prev_next(obj,porn,opts,thisindex);
+				fade_prev_next(obj,porn,opts,thisindex);
 			}
 
 			if(opts.SwitchStyle == 'toleft')
@@ -109,13 +108,13 @@
 				$objli.eq(thisindex).css({'left':'100%'});
 
 				//toleft切换
-				$.fn.fredslide.toleft_prev_next(obj,porn,opts,thisindex);
+				toleft_prev_next(obj,porn,opts,thisindex);
 			}
 		});
 	};
 
 	//添加左右按钮
-	$.fn.fredslide.prev_next_add = function(obj,opts){
+	function prev_next_add(obj,opts){
 		var str = [],
 			pobj = '.' + opts.Prev + ',.' + opts.Next,
 			click_next = false,
@@ -153,13 +152,13 @@
 			if(opts.SwitchStyle == 'fade')
 			{
 				//fade切换
-				$.fn.fredslide.fade_prev_next(obj,click_next,opts);
+				fade_prev_next(obj,click_next,opts);
 			}
 
 			if(opts.SwitchStyle == 'toleft')
 			{
 				//toleft切换
-				$.fn.fredslide.toleft_prev_next(obj,click_next,opts);
+				toleft_prev_next(obj,click_next,opts);
 			}
 
 		});
@@ -167,7 +166,7 @@
 	};
 
 	//fade切换
-	$.fn.fredslide.fade_prev_next = function(obj,r,opts,ifdot){
+	function fade_prev_next(obj,r,opts,ifdot){
 		var $bli = obj.find('li'),
 			thisnum = $bli.parent().find('li.active').index(),
 			nextindex = thisnum - 1;
@@ -183,7 +182,7 @@
 
 
 	//toleft切换
-	$.fn.fredslide.toleft_prev_next = function(obj,r,opts,ifdot){
+	function toleft_prev_next(obj,r,opts,ifdot){
 		var $bli = obj.find('li'),
 			thisnum = $bli.parent().find('li.active').index(),
 			nextindex = 0,
@@ -209,7 +208,7 @@
 	};
 
 	//元素初始化
-	$.fn.fredslide.slide_load = function(obj,opts){
+	function slide_load(obj,opts){
 
 		var $objli = obj.find('li'),
 			lilen = $objli.length,
@@ -233,7 +232,7 @@
 		if(opts.AutoPlay && lilen > 1)
 		{
 			//自动播放
-			$.fn.fredslide.auto_play(obj,opts);
+			auto_play(obj,opts);
 		}
 
 		obj.on('click mouseenter mouseleave','li .slide-txt',function(event){
@@ -283,7 +282,7 @@
 		else
 		{
 			//自动播放
-			$.fn.fredslide.auto_play(obj,opts);
+			auto_play(obj,opts);
 		}
 	};
 
@@ -315,7 +314,7 @@
 		AutoPlay : false,
 		AutoTime : 1000,
 		AutoDelay : 2000,
-		Aneasing : 'easeOutQuart'
+		Aneasing : 'easeOutQuad'
 	};
 
 })(jQuery);
