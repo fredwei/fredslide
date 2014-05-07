@@ -4,9 +4,25 @@
 // you can contact me email 250095176@163.com or QQ 250095176 , Best can speak Chinese
 
 ;(function($){
+
+	//默认值
+	var defaults = {
+		Prev : 'prev',
+		Next : 'next',
+		StartInex: 0,
+		SwitchTime : 800,
+		SwitchStyle:'fade',
+		Dot : true,
+		AutoPlay : false,
+		AutoTime : 1000,
+		AutoDelay : 2000,
+		Aneasing : 'easeOutQuad',
+		timer : null
+	};
+
 	$.fn.fredslide = function(options){
 
-		var opts = $.extend({},$.fn.fredslide.defaults,options);
+		var opts = $.extend({},defaults,options);
 
 		//执行代码
 		return this.each(function(){
@@ -26,14 +42,13 @@
 	};
 
 	//自动播放
-	var timer = null;
 	function auto_play(obj,opts){
 
 	   var depaytime = opts.AutoDelay + opts.SwitchTime + opts.AutoTime;
 
-	   clearTimeout(timer);
+	   clearTimeout(opts.timer);
 
-		timer = setTimeout(function(){
+		opts.timer = setTimeout(function(){
 
 
 			if(opts.SwitchStyle == 'fade')
@@ -277,7 +292,7 @@
 
 		if(s == 'click' || s == 'mouseenter' || !opts.AutoPlay)
 		{
-			clearTimeout(timer);
+			clearTimeout(opts.timer);
 		}
 		else
 		{
@@ -300,21 +315,6 @@
 		$objli.eq(previndex).css({'left':'-100%'});
 		$objli.eq(nextindex).css({'left':'100%'});
 		
-	};
-
-
-	//默认值
-	$.fn.fredslide.defaults = {
-		Prev : 'prev',
-		Next : 'next',
-		StartInex: 0,
-		SwitchTime : 800,
-		SwitchStyle:'fade',
-		Dot : true,
-		AutoPlay : false,
-		AutoTime : 1000,
-		AutoDelay : 2000,
-		Aneasing : 'easeOutQuad'
 	};
 
 })(jQuery);
