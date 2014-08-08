@@ -1,7 +1,5 @@
-// made in fred,2014.04.29,shenzhen
-// my website http://fredweb.duapp.com/
-// this plug in git https://github.com/fredwei/fredslide
-// you can contact me email 250095176@163.com or QQ 250095176 , Best can speak Chinese
+// made by fred, 2014.04.29, shenzhen
+// you can contact me with email 250095176@163.com or QQ 250095176, the best is you can speak with Chinese
 
 ;(function($){
 
