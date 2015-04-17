@@ -1,148 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8" />
-<title>fredslide - 图片轮播</title>
-<style>
-body,div,img,ul,li,a,dl,dd{margin:0;padding:0; font-family: '微软雅黑'}
-ul,li,{list-style: none;}
-html,body{width: 100%;}
-a{color: #fff; text-decoration: none;}
-h2{text-align: center; color: #333;}
+	<meta charset="UTF-8">
+	<title>fredslide</title>
 
-/* 内容部分 */
-.slide{position: relative;width: 100%;height:600px; overflow: hidden; z-index: 5;}
-.slide li{position: absolute;width: 100%;height: 100%; display: none; list-style: none;}
-.slide li.active{ z-index: 10;}
-
-	/* 背景图 */
-.slide .slide-bg{position: absolute; top: 0; left: 0; width: 100%;height: 100%;}
-.slide .slide-bg img{position: absolute; top: 0; left: 0; max-width: 100%;}
-	/* 内容 */
-.slide .slide-txt{ position: absolute; left: 40%; top: 35%; width: 410px;}
-.slide .slide-txt .txt_t{margin-bottom:20px;line-height:38px;font-size:30px;font-weight:700;color:#fff;}
-.slide .slide-txt .txt_c{margin-bottom:30px;font-size:16px;line-height:22px;color:#fff;}
-
-/* 左右按钮 */
-.slide .prev,.slide .next{position: absolute; top: 45%; width: 80px; height: 200px; text-indent: -9999px; z-index: 20;}
-.slide .prev{left:40px;	background:url(images/pre_ico.png) center center no-repeat;}
-.slide .next{right:40px;background:url(images/next_ico.png) center center no-repeat;}
-
-/* 圆点按钮 */
-.slide .slide-dot{position: absolute; bottom:5%; width: 100%; text-align: center; z-index: 20;}
-.slide .slide-dot dd{display:inline-block;*display:inline;*zoom:1;margin:0 9px;width:12px;height:12px; text-indent: -9999px;background-image:url(images/sy_icon1.png);background-repeat:no-repeat;background-position:-28px 0px;cursor:pointer;}
-.slide .slide-dot dd.active{background-position:0px 0px;}
-
-
-/* 向左滚动 */
-.slide2 li{display: block; left: 100%;}
-</style>
+	<link rel="stylesheet" href="src/jquery.fredslide.css">
 </head>
 <body>
 
-	<h2>渐隐渐出</h2>
+<div id="slide" class="slide">
+	<ul>
+		<li class="page1">1</li>
+		<li class="page2">2</li>
+		<li class="page3">3</li>
+	</ul>
+</div>
 
-	<div id="slide" class="slide">
-	    <ul>
-	    	<li>
-	    		<div class="slide-bg"><img src="images/p1.jpg" /></div>
-	    		<div class="slide-txt">
-	                    <div class="txt_t">创造美学视觉网站<br />提供兼容多平台新技术</div>
-	                    <div class="txt_c">万科双月湾-全新趣味性视觉体验<br />通过功能和设计，全方位提升产品战略。</div>
-	                    <div class="bt jd_bt">
-	                        <div data-to="b2" class="bt_t"><a href="#">进入案例</a></div>
-	                        <div class="bt_b"></div>
-	                    </div>
-	    		</div>
-	    	</li>
-	    	<li>
-	    		<div class="slide-bg"><img src="images/p2.jpg" /></div>
-	    		<div class="slide-txt">
-	                    <div class="txt_t">专注品牌形象创新<br />提供视觉与策略方案</div>
-	                    <div class="txt_c">矩阵动力汽车服务机构-我们采用多元形象视觉<br />应用组合，增强品牌个性表现力。</div>
-	                    <div class="bt jd_bt">
-	                        <div data-to="b3" class="bt_t"><a href="#">进入案例</a></div>
-	                        <div class="bt_b"></div>
-	                    </div>
-	    		</div>
-	    	</li>
-	    	<li>
-	    		<div class="slide-bg"><img src="images/p3.jpg" /></div>
-	    		<div class="slide-txt">
-	                    <div class="txt_t">入选亚洲创造者150人<br />ASIAN CREATIVES</div>
-	                    <div class="txt_c">G’DAY入选ASIAN CREATIVES 使世界为之热情的，<br />亚洲创造者150人，由日本出版机构UBIES企划。</div>
-	                    <div class="bt jd_bt">
-	                        <div data-to="b3" class="bt_t"><a href="#">进入事件</a></div>
-	                        <div class="bt_b"></div>
-	                    </div>
-	    		</div>
-	    	</li>
-	    </ul>
-	</div>
-
-	<h2>向左滚动</h2>
-	<div id="slide2" class="slide slide2">
-	    <ul>
-	    	<li>
-	    		<div class="slide-bg"><img src="images/p1.jpg" /></div>
-	    		<div class="slide-txt">
-	                    <div class="txt_t">创造美学视觉网站<br />提供兼容多平台新技术</div>
-	                    <div class="txt_c">万科双月湾-全新趣味性视觉体验<br />通过功能和设计，全方位提升产品战略。</div>
-	                    <div class="bt jd_bt">
-	                        <div data-to="b2" class="bt_t"><a href="#">进入案例</a></div>
-	                        <div class="bt_b"></div>
-	                    </div>
-	    		</div>
-	    	</li>
-	    	<li>
-	    		<div class="slide-bg"><img src="images/p2.jpg" /></div>
-	    		<div class="slide-txt">
-	                    <div class="txt_t">专注品牌形象创新<br />提供视觉与策略方案</div>
-	                    <div class="txt_c">矩阵动力汽车服务机构-我们采用多元形象视觉<br />应用组合，增强品牌个性表现力。</div>
-	                    <div class="bt jd_bt">
-	                        <div data-to="b3" class="bt_t"><a href="#">进入案例</a></div>
-	                        <div class="bt_b"></div>
-	                    </div>
-	    		</div>
-	    	</li>
-	    	<li>
-	    		<div class="slide-bg"><img src="images/p3.jpg" /></div>
-	    		<div class="slide-txt">
-	                    <div class="txt_t">入选亚洲创造者150人<br />ASIAN CREATIVES</div>
-	                    <div class="txt_c">G’DAY入选ASIAN CREATIVES 使世界为之热情的，<br />亚洲创造者150人，由日本出版机构UBIES企划。</div>
-	                    <div class="bt jd_bt">
-	                        <div data-to="b3" class="bt_t"><a href="#">进入事件</a></div>
-	                        <div class="bt_b"></div>
-	                    </div>
-	    		</div>
-	    	</li>
-	    	<li>
-	    		<div class="slide-bg"><img src="images/p2.jpg" /></div>
-	    		<div class="slide-txt">
-	                    <div class="txt_t">专注品牌形象创新<br />提供视觉与策略方案</div>
-	                    <div class="txt_c">矩阵动力汽车服务机构-我们采用多元形象视觉<br />应用组合，增强品牌个性表现力。</div>
-	                    <div class="bt jd_bt">
-	                        <div data-to="b3" class="bt_t"><a href="#">进入案例</a></div>
-	                        <div class="bt_b"></div>
-	                    </div>
-	    		</div>
-	    	</li>
-	    	<li>
-	    		<div class="slide-bg"><img src="images/p3.jpg" /></div>
-	    		<div class="slide-txt">
-	                    <div class="txt_t">入选亚洲创造者150人<br />ASIAN CREATIVES</div>
-	                    <div class="txt_c">G’DAY入选ASIAN CREATIVES 使世界为之热情的，<br />亚洲创造者150人，由日本出版机构UBIES企划。</div>
-	                    <div class="bt jd_bt">
-	                        <div data-to="b3" class="bt_t"><a href="#">进入事件</a></div>
-	                        <div class="bt_b"></div>
-	                    </div>
-	    		</div>
-	    	</li>
-	    </ul>
-	</div>
-
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/jquery.fredslide.1.0.2.js"></script>
-<script src="js/main.js"></script>
+<script src="src/jquery.min.js"></script>
+<script src="src/jquery.fredslide.js"></script>
+<script>
+$(function(){
+	$('#slide').fredslide({
+		isPauseAnimate : true
+	});
+});
+</script>
 </body>
 </html>
